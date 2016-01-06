@@ -11,11 +11,12 @@ describe ConnectFourCli::Board do
   describe '#place_checker' do
     it 'drops a checker in the given column' do
       board = build_board
-      checker = "hi"
+      checker = "hi" # !> assigned but unused variable - checker
       board.place_checker(red_checker, at: 3)
       board.place_checker(yellow_checker, at: 3)
       board.display
       expect(board.column_count(3)).to eq 2
+      p board.each_diag :red
     end
   end
 

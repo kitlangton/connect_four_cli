@@ -10,18 +10,18 @@ module ConnectFourCli
       end
     end
 
-    def self.highlight_column(board, column)
+    def self.highlight_column(game, column)
       map = Dispel::StyleMap.new(6) # number of lines
       (0..5).each do |row|
-        map.add(turn_color(board.turn), row, column..column)
+        map.add(turn_color(game.turn), row, column..column)
       end
-      board.red_locations.each do |location|
+      game.red_locations.each do |location|
         map.add(["#ff0000", "#000000"], location[0], location[1]*2..location[1]*2 + 1)
       end
-      board.yellow_locations.each do |location|
+      game.yellow_locations.each do |location|
         map.add(["#ffff00", "#000000"], location[0], location[1]*2..location[1]*2 + 1)
       end
-      map.add(turn_color(board.turn), 0, column..column)
+      map.add(turn_color(game.turn), 0, column..column)
       map
     end
 
@@ -29,17 +29,17 @@ module ConnectFourCli
       ::Dispel::Screen.open(colors: true) do |screen|
         Curses.curs_set 0
 
-        board = Board.new(6)
-        content = board.display
+        game = Game.new(6)
+        content = game.display
 
         x = 0
         y = 0
 
-        map = self.highlight_column(board, x)
+        map = self.highlight_column(game, x)
         screen.draw content, map, [y,x]
 
         Dispel::Keyboard.output do |key|
-          if board.winner
+          if game.winner
             Dispel::Keyboard.output do |key|
               case key
               when "q" then break
@@ -56,12 +56,12 @@ module ConnectFourCli
             next if x - 2 < 0
             x-= 2
           when " "
-            board.place_turn_checker(x / 2)
+            game.place_turn_checker(x / 2)
           when "q" then break
 
           end
           map = self.highlight_column(board, x)
-          content = board.display
+          content = game.display
           screen.draw content, map, [y,x]
         end
       end
