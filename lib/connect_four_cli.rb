@@ -1,5 +1,10 @@
 require "connect_four_cli/version"
+require "connect_four_cli/checker"
+require "connect_four_cli/board"
+require "connect_four_cli/renderer"
 
 module ConnectFourCli
-  # Your code goes here...
+  def self.start
+    Renderer.start
+  end
 end
