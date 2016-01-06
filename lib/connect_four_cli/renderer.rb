@@ -60,7 +60,7 @@ module ConnectFourCli
           when "q" then break
 
           end
-          map = self.highlight_column(board, x)
+          map = self.highlight_column(game, x)
           content = game.display
           screen.draw content, map, [y,x]
         end

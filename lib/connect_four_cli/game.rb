@@ -16,10 +16,10 @@ module ConnectFourCli
     end
 
     def place_turn_checker(position)
-      return if column_full?(position)
       checker = Checker.new(@turn)
-      board.place_checker(checker, at: position)
-      next_turn
+      if board.place_checker(checker, at: position)
+        next_turn
+      end
     end
 
     def red_locations
