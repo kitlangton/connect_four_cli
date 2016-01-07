@@ -25,11 +25,10 @@ module ConnectFourCli
       map
     end
 
-    def self.start
+    def self.start(game)
       ::Dispel::Screen.open(colors: true) do |screen|
         Curses.curs_set 0
 
-        game = Game.new(6)
         content = game.display
 
         x = 0

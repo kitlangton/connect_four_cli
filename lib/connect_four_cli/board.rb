@@ -74,6 +74,84 @@ module ConnectFourCli
       false
     end
 
+    def terrible_moves
+      moves = []
+      possible_moves.each do |possible_move|
+        all_directions_from(1,possible_move.reverse).each do |ray|
+          if ray.all? { |checker| checker.checker? && checker.color == :yellow }
+            moves << possible_move
+          end
+        end
+      end
+      moves
+    end
+
+    def decent_moves
+      moves = []
+      possible_moves.each do |possible_move|
+        all_directions_from(2,possible_move.reverse).each do |ray|
+          if ray.all? { |checker| checker.checker? && checker.color == :yellow }
+            moves << possible_move
+          end
+        end
+      end
+      moves
+    end
+
+    def winning_moves
+      moves = []
+      possible_moves.each do |possible_move|
+        all_directions_from(3,possible_move.reverse).each do |ray|
+          color = ray[0].color
+          if ray.all? { |checker| checker.checker? && checker.color == color }
+            moves << possible_move
+          end
+        end
+      end
+      moves
+    end
+
+    def all_directions_from(distance, coord)
+      directions = []
+      [:+,:-].repeated_permutation(2) do |first, second|
+        direction = []
+        x, y = coord
+        distance.times do
+          x = x.send(first, 1)
+          y = y.send(second, 1)
+          next if x > 5 || x < 0 || y > 6 || y < 0
+          direction << [x,y]
+        end
+        directions << direction
+
+        x, y = coord
+        directionx = []
+        directiony = []
+        distance.times do
+          x = x.send(first, 1)
+          y = y.send(second, 1)
+          directionx << [x,coord[1]] unless x > 5 || x < 0
+          directiony << [coord[0], y] unless y > 5 || y < 0
+        end
+        directions << directiony
+        directions << directionx
+      end
+      directions = directions.reject { |direction| direction.length < distance}.uniq
+
+      directions.map do |direction|
+        direction.map do |x,y|
+          grid[x][y]
+        end
+      end
+    end
+
+    def possible_moves
+      (0...size).map do |row|
+        position = free_position(row)
+        [row, position] unless column_full?(row)
+      end.compact
+    end
+
     def each_diag(color)
       all_diagonals.each do |diagonal|
         diagonal.each_cons(4) do |winning_diag|
@@ -112,6 +190,10 @@ module ConnectFourCli
         end
       end
       false
+    end
+
+    def full?
+      @grid.flatten.all?(&:checker?)
     end
 
     def place_checker(checker, at:)

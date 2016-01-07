@@ -27,6 +27,10 @@ class NoChecker < Checker
     super(:none)
   end
 
+  def ==(other_checker)
+    false
+  end
+
   def display
     "0"
   end

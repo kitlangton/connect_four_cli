@@ -2,16 +2,21 @@ module ConnectFourCli
   class Game
     attr_reader :board, :turn, :winner
 
-    def initialize(size)
+    def initialize(size, computer = false)
       @turn = :red
       @board = Board.new(size)
+      @computer = Computer.new(board) if computer
     end
 
     def next_turn
       if @winner
           @turn = @winner
       else
+        if @computer
+          @computer.make_move
+        else
         @turn = (@turn == :red ? :yellow : :red)
+        end
       end
     end
 
@@ -46,6 +51,9 @@ module ConnectFourCli
         @winner = :red
         @turn = :red
         "Red wins! Press q to quit."
+      elsif board.full?
+        @winner = :draw
+        "It's a draw! Press q to quit"
       else
       "#{@turn.capitalize}'s turn."
       end
