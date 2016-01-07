@@ -11,8 +11,8 @@ describe ConnectFourCli::Board do
   describe '#place_checker' do
     it 'drops a checker in the given column' do
       board = build_board
-      board.place_checker(red_checker, at: 3)
-      board.place_checker(red_checker, at: 3)
+      board.place_checker(red_checker, at: 0)
+      board.place_checker(red_checker, at: 2)
       board.place_checker(red_checker, at: 3)
       board.display
       puts board.display
