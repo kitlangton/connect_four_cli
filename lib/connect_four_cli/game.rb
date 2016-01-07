@@ -12,12 +12,17 @@ module ConnectFourCli
       if @winner
           @turn = @winner
       else
-        if @computer
-          @computer.make_move
-        else
         @turn = (@turn == :red ? :yellow : :red)
-        end
       end
+    end
+
+    def computer_move
+      @computer.make_move
+      next_turn
+    end
+
+    def computer_turn?
+      !!@computer && @turn == :yellow
     end
 
     def place_turn_checker(position)
@@ -55,7 +60,11 @@ module ConnectFourCli
         @winner = :draw
         "It's a draw! Press q to quit"
       else
-      "#{@turn.capitalize}'s turn."
+        if computer_turn?
+          "Computer's turn."
+        else
+          "#{@turn.capitalize}'s turn."
+        end
       end
     end
   end

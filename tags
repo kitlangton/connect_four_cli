@@ -28,6 +28,8 @@ checker?	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/ch
 column	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def column(number)$/;"	f	class:ConnectFourCli.Board
 column_count	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def column_count(number)$/;"	f	class:ConnectFourCli.Board
 column_full?	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def column_full?(number)$/;"	f	class:ConnectFourCli.Board
+computer_move	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/game.rb	/^    def computer_move$/;"	f	class:ConnectFourCli.Game
+computer_turn?	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/game.rb	/^    def computer_turn?$/;"	f	class:ConnectFourCli.Game
 decent_moves	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def decent_moves$/;"	f	class:ConnectFourCli.Board
 display	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def display$/;"	f	class:ConnectFourCli.Board
 display	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/checker.rb	/^  def display$/;"	f	class:ConnectFourCli.Checker

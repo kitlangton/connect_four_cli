@@ -7,10 +7,10 @@ require "connect_four_cli/renderer"
 
 module ConnectFourCli
   def self.start
-    if ARGV[0] == "-c"
-      game = Game.new(6, true)
-    else
+    if ARGV[0] == "--two" || ARGV[0] == "-2"
       game = Game.new(6)
+    else
+      game = Game.new(6, true)
     end
     Renderer.start(game)
   end

@@ -12,8 +12,11 @@ module ConnectFourCli
 
     def self.highlight_column(game, column)
       map = Dispel::StyleMap.new(6) # number of lines
-      (0..5).each do |row|
-        map.add(turn_color(game.turn), row, column..column)
+      unless game.computer_turn?
+        (0..5).each do |row|
+          map.add(turn_color(game.turn), row, column..column)
+          map.add(turn_color(game.turn), 0, column..column)
+        end
       end
       game.red_locations.each do |location|
         map.add(["#ff0000", "#000000"], location[0], location[1]*2..location[1]*2 + 1)
@@ -21,7 +24,6 @@ module ConnectFourCli
       game.yellow_locations.each do |location|
         map.add(["#ffff00", "#000000"], location[0], location[1]*2..location[1]*2 + 1)
       end
-      map.add(turn_color(game.turn), 0, column..column)
       map
     end
 
@@ -37,7 +39,7 @@ module ConnectFourCli
         map = self.highlight_column(game, x)
         screen.draw content, map, [y,x]
 
-        Dispel::Keyboard.output do |key|
+        Dispel::Keyboard.output timeout: 0.5 do |key|
           if game.winner
             Dispel::Keyboard.output do |key|
               case key
@@ -45,6 +47,14 @@ module ConnectFourCli
               end
             end
             break
+          end
+
+          if game.computer_turn?
+            sleep 0.5
+            game.computer_move
+            map = self.highlight_column(game, x)
+            content = game.display
+            screen.draw content, map, [y,x]
           end
 
           case key
@@ -62,6 +72,7 @@ module ConnectFourCli
           map = self.highlight_column(game, x)
           content = game.display
           screen.draw content, map, [y,x]
+
         end
       end
     end
