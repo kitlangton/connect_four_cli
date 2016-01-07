@@ -102,18 +102,20 @@ module ConnectFourCli
       moves = []
       possible_moves.each do |possible_move|
         all_directions_from(3,possible_move.reverse).each do |ray|
+          next if ray.length < 3
           color = ray[0].color
-          if ray.all? { |checker| checker.checker? && checker.color == color }
+          if ray.all? { |checker| !checker.nil? && checker.checker? && checker.color == color }
             moves << possible_move
           end
         end
 
         other_moves = all_directions_from(2,possible_move.reverse).map.with_index do |ray2, i|
-          ray2 << all_directions_from(1,possible_move.reverse)[i][0]
-        end
+          (ray2 << all_directions_from(1,possible_move.reverse)[i][0]).compact
+        end.reject { |ray| ray.length < 3 }
         other_moves.each do |ray|
+          next if ray.length < 3
           color = ray[0].color
-          if ray.all? { |checker| checker.checker? && checker.color == color }
+          if ray.all? { |checker| !checker.nil? && checker.checker? && checker.color == color }
             moves << possible_move
           end
         end

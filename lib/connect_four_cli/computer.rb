@@ -15,7 +15,7 @@ module ConnectFourCli
 
     def make_move
       if board.winning_moves.length > 0
-        move = board.winning_moves.sample[0]
+        move = board.winning_moves[0][0]
       else
         move = random_move
       end

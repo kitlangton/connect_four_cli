@@ -19,8 +19,8 @@ ConnectFourCli	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_
 Game	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/game.rb	/^  class Game$/;"	c	class:ConnectFourCli
 NoChecker	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/checker.rb	/^class NoChecker < Checker$/;"	c	class:ConnectFourCli
 Renderer	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/renderer.rb	/^  class Renderer$/;"	c	class:ConnectFourCli
-all_diagonals	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def all_diagonals$/;"	f	class:ConnectFourCli.Board.possible_moves
-all_directions_from	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def all_directions_from(distance, coord)$/;"	f	class:ConnectFourCli.Board
+all_diagonals	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def all_diagonals$/;"	f	class:ConnectFourCli.Board.winning_moves.possible_moves
+all_directions_from	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def all_directions_from(distance, coord)$/;"	f	class:ConnectFourCli.Board.winning_moves
 build_board	/Users/kitlangton/Viking/Unit4/connect_four_cli/spec/connect_four_cli/board_spec.rb	/^  def build_board$/;"	f
 build_grid	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def build_grid$/;"	f	class:ConnectFourCli.Board
 checker?	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/checker.rb	/^  def checker?$/;"	f	class:ConnectFourCli.Checker
@@ -36,11 +36,11 @@ display	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/che
 display	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/checker.rb	/^  def display$/;"	f	class:ConnectFourCli.NoChecker
 display	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/game.rb	/^    def display$/;"	f	class:ConnectFourCli.Game
 each_col	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def each_col(color)$/;"	f	class:ConnectFourCli.Board
-each_diag	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def each_diag(color)$/;"	f	class:ConnectFourCli.Board.possible_moves
-each_row	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def each_row(color)$/;"	f	class:ConnectFourCli.Board
+each_diag	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def each_diag(color)$/;"	f	class:ConnectFourCli.Board.winning_moves.possible_moves
+each_row	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def each_row(color)$/;"	f	class:ConnectFourCli.Board.winning_moves
 four_in_a_row?	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def four_in_a_row?(color)$/;"	f	class:ConnectFourCli.Board
 free_position	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def free_position(number)$/;"	f	class:ConnectFourCli.Board
-full?	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def full?$/;"	f	class:ConnectFourCli.Board
+full?	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def full?$/;"	f	class:ConnectFourCli.Board.winning_moves
 game_state	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/game.rb	/^    def game_state$/;"	f	class:ConnectFourCli.Game
 highlight_column	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/renderer.rb	/^    def self.highlight_column(game, column)$/;"	F	class:ConnectFourCli.Renderer
 initialize	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def initialize(size)$/;"	f	class:ConnectFourCli.Board
@@ -51,9 +51,9 @@ initialize	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/
 locations_for	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def locations_for(color)$/;"	f	class:ConnectFourCli.Board
 make_move	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/computer.rb	/^    def make_move$/;"	f	class:ConnectFourCli.Computer.random_move
 next_turn	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/game.rb	/^    def next_turn$/;"	f	class:ConnectFourCli.Game
-place_checker	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def place_checker(checker, at:)$/;"	f	class:ConnectFourCli.Board
+place_checker	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def place_checker(checker, at:)$/;"	f	class:ConnectFourCli.Board.winning_moves
 place_turn_checker	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/game.rb	/^    def place_turn_checker(position)$/;"	f	class:ConnectFourCli.Game
-possible_moves	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def possible_moves$/;"	f	class:ConnectFourCli.Board
+possible_moves	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/board.rb	/^    def possible_moves$/;"	f	class:ConnectFourCli.Board.winning_moves
 random_move	/Users/kitlangton/Viking/Unit4/connect_four_cli/lib/connect_four_cli/computer.rb	/^    def random_move$/;"	f	class:ConnectFourCli.Computer
 red_checker	/Users/kitlangton/Viking/Unit4/connect_four_cli/spec/connect_four_cli/board_spec.rb	/^  def red_checker$/;"	f
 red_checker	/Users/kitlangton/Viking/Unit4/connect_four_cli/spec/connect_four_cli/checker_spec.rb	/^  def red_checker$/;"	f
